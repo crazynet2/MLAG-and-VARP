@@ -1,0 +1,103 @@
+# MLAG Configuration
+mlag configuration
+   domain-id 1
+   local-interface Ethernet1/1
+   peer-address 10.0.0.2
+   peer-link Ethernet1/2
+   dual-primary detection timer 90
+   reload-delay-timer 300
+
+# Configure MLAG interfaces
+interface Ethernet1/1
+   mlag 1
+
+# Configure MLAG peer-link
+interface Ethernet1/2
+   mlag 1
+
+# VARP Configuration
+interface Vlan10
+   ip address 10.0.0.1/24
+   varp timers 50
+
+
+
+# MLAG Configuration
+mlag configuration
+   domain-id 1
+   local-interface Ethernet1/1
+   peer-address 10.0.0.1
+   peer-link Ethernet1/2
+   dual-primary detection timer 90
+   reload-delay-timer 300
+
+# Configure MLAG interfaces
+interface Ethernet1/1
+   mlag 1
+
+# Configure MLAG peer-link
+interface Ethernet1/2
+   mlag 1
+
+# VARP Configuration
+interface Vlan10
+   ip address 10.0.0.1/24
+   varp timers 50
+
+
+# MLAG Configuration
+mlag configuration
+   domain-id 2
+   local-interface Ethernet1/1
+   peer-address 10.0.0.4
+   peer-link Ethernet1/2
+   dual-primary detection timer 90
+   reload-delay-timer 300
+
+# Configure MLAG interfaces
+interface Ethernet1/1
+   mlag 2
+
+# Configure MLAG peer-link
+interface Ethernet1/2
+   mlag 2
+
+# VARP Configuration
+interface Vlan20
+   ip address 10.0.0.3/24
+   varp timers 50
+
+
+# MLAG Configuration
+mlag configuration
+   domain-id 2
+   local-interface Ethernet1/1
+   peer-address 10.0.0.3
+   peer-link Ethernet1/2
+   dual-primary detection timer 90
+   reload-delay-timer 300
+
+# Configure MLAG interfaces
+interface Ethernet1/1
+   mlag 2
+
+# Configure MLAG peer-link
+interface Ethernet1/2
+   mlag 2
+
+# VARP Configuration
+interface Vlan20
+   ip address 10.0.0.3/24
+   varp timers 50
+
+
+This configuration assumes:
+
+Switches 1 and 2 form one MLAG domain with VARP configured on VLAN 10.
+Switches 3 and 4 form another MLAG domain with VARP configured on VLAN 20.
+Each switch pair has its own MLAG domain ID.
+Interfaces used for MLAG peer-link and VARP are appropriately configured. Adjust the interface names and IP addresses according to your network setup.
+VARP timers are synchronized between switches in the same domain.
+
+
+
